@@ -1,0 +1,57 @@
+{
+  "name": "senlife-backend",
+  "version": "1.0.0",
+  "description": "The backend server for senfife",
+  "main": "index.js",
+  "author": "pp",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=production npm run build:prod && node ./dist/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/app.ts",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "clean": "rimraf dist",
+    "build:prod": "npm run clean && tsc",
+    "sqlz:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "sqlz:undo": "./node_modules/.bin/sequelize db:migrate:undo",
+    "sqlz:new": "./node_modules/.bin/sequelize migration:create"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "sequelize": "^5.21.11",
+    "winston": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/bluebird": "^3.5.32",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/helmet": "^0.0.47",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.5",
+    "@types/supertest": "^2.0.9",
+    "@types/validator": "^13.0.0",
+    "cross-env": "^7.0.2",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "rimraf": "^3.0.2",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.0.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
