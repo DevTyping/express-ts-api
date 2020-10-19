@@ -1,12 +1,14 @@
-import { HelloController } from "../controllers/HelloController"
+import {
+  AuthController,
+  AuthControllerInterface,
+} from "./../controllers/Auth/AuthController"
 import { RouteInterface } from "./route.interface"
 
 export class Routes {
-  public helloController: HelloController = new HelloController()
+  public AuthController: AuthControllerInterface = new AuthController()
 
   public routes(app: any): void {
-    app.route("/").get(this.helloController.index)
-    this.crud(app, "/users", this.helloController)
+    this.authGroup(app, "/auth", this.AuthController)
   }
 
   public crud(app: any, route: String, controller: RouteInterface): void {
@@ -16,5 +18,15 @@ export class Routes {
       .post(controller.create)
       .patch(controller.update)
       .delete(controller.delete)
+  }
+
+  private authGroup(
+    app: any,
+    path: string,
+    controller: AuthControllerInterface
+  ): void {
+    app.route(`${path}/login`).post(controller.login)
+    app.route(`${path}/signup`).post(controller.signup)
+    app.route(`${path}/forget_password`).post(controller.forgetPassword)
   }
 }

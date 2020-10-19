@@ -1,6 +1,7 @@
 .vscode/
 .idea/
 .npm/
+logs/
 .env
 node_modules/
 dist/

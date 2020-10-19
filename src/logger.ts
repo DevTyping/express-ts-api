@@ -11,7 +11,7 @@ export const logger = createLogger({
     format.json()
   ),
   transports: [
-    new transports.File({ filename: "senapi-error.log", level: "error" }),
-    new transports.File({ filename: "senapi-combined.log" }),
+    new transports.File({ filename: "logs/senapi-error.log", level: "error" }),
+    new transports.File({ filename: "logs/senapi-combined.log" }),
   ],
 })
