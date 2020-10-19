@@ -1,4 +1,4 @@
-# API for SenLife
+# A side project using expressjs + typescripts to make a beautiful restful api.
 
 ## RUN
 
